@@ -35,15 +35,19 @@ void menu()
 }
 
 
-void registrarVacina(Vacina *read, int j)
+void registrarVacina(Vacina *read, int j, Vacina ler[99])
 {
+
+
+
 int i = 0;
 char cpf[30];
 printf("\n Por favor, desconsidere os pontos e traços!\n Digite o cpf: ");
 scanf(" %s", read->cpf);fflush(stdin);
 
-for(i = 0; i <= 99; i++){
-    int s = strcmp(read[i].cpf, read->cpf);
+for(i = 0; i < j; i++){
+    int s = strcmp(ler[i].cpf, read->cpf);
+    printf("%s", ler[i].cpf);
         if(s == 0 && j != 0){
             printf("\n CPF JÁ CONSTA NA NOSSA BASE DE DADOS!\n");
             printf("\n Digite outro cpf: ");
@@ -132,8 +136,8 @@ do {
     switch(opcao)
     {
     case 1:
-        registrarVacina(&vacina[i], i);
-        i=i+1;
+        registrarVacina(&vacina[i], i, vacina);
+        i++;
         break;
     case 2:
         lerVacina(vacina, i);
